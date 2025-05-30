@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "stinkysocks",
+	"version": "${version}",
+	"name": "Stinky Socks",
+	"description": "A mod that adds all the Stinkyness you want!!",
+	"authors": [
+		"-JustACoder"
+	],
+	"contact": {
+		"homepage": "None",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/stinkysocks/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.justacoder.stinkysocks.StinkySocks"
+		],
+		"fabric-datagen": [
+			"com.justacoder.stinkysocks.StinkySocksDataGenerator"
+		],
+		"client": [
+			"com.justacoder.stinkysocks.StinkySocksClient"
+		]
+	},
+	"mixins": [
+		"stinkysocks.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
