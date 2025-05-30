@@ -1,6 +1,7 @@
 package com.justacoder.stinkysocks;
 
 import com.justacoder.stinkysocks.block.ModBlocks;
+import com.justacoder.stinkysocks.block.entity.ModBlockEntities;
 import com.justacoder.stinkysocks.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
@@ -15,5 +16,6 @@ public class StinkySocks implements ModInitializer {
 	public void onInitialize() {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModBlockEntities.registerBlockEntities();
 	}
 }

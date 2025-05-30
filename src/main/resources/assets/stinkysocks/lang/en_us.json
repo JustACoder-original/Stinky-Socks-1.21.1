@@ -2,6 +2,6 @@
   "item.stinkysocks.dry_socks": "Dry socks",
   "item.stinkysocks.wet_socks": "Wet socks",
   "item.stinkysocks.stinky_wet_socks": "Stinky Wet Socks",
-  "item.stinkysocks.stinky_socks": "Stinky Socks"
-
+  "item.stinkysocks.stinky_socks": "Stinky Socks",
+  "block.stinkysocks.washing_machine" : "Washing Machine"
 }

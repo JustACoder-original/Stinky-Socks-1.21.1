@@ -14,6 +14,7 @@ public class ModItems {
     public static final Item WET_SOCKS = registerItem("wet_socks", new Item(new Item.Settings()));
     public static final Item STINKY_WET_SOCKS = registerItem("stinky_wet_socks", new Item(new Item.Settings()));
     public static final Item STINKY_SOCKS = registerItem("stinky_socks", new Item(new Item.Settings()));
+    public static final Item WASHING_MACHINE = registerItem("washing_machine", new Item(new Item.Settings()));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(StinkySocks.MOD_ID, name), item);

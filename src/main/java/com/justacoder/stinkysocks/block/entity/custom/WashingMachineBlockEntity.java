@@ -3,6 +3,7 @@ package com.justacoder.stinkysocks.block.entity.custom;
 import com.justacoder.stinkysocks.block.entity.ImplementedInventory;
 import com.justacoder.stinkysocks.block.entity.ModBlockEntities;
 import com.justacoder.stinkysocks.item.ModItems;
+import com.justacoder.stinkysocks.screen.custom.WashingMachineScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -76,9 +77,10 @@ public class WashingMachineBlockEntity extends BlockEntity implements ExtendedSc
         return Text.translatable("block.stinkysocks.washing_machine");
     }
 
+    @Nullable
     @Override
-    public @Nullable ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return null;
+    public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
+        return new WashingMachineScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
     }
 
     public void tick(World world, BlockPos pos, BlockState state) {

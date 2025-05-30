@@ -1,0 +1,11 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "stinkysocks:block/custom_block_bottom",
+    "up": "stinkysocks:block/custom_block_top",
+    "north": "stinkysocks:block/custom_block_front",
+    "south": "stinkysocks:block/custom_block_back",
+    "west": "stinkysocks:block/custom_block_left",
+    "east": "stinkysocks:block/custom_block_right"
+  }
+}
