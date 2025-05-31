@@ -3,6 +3,7 @@ package com.justacoder.stinkysocks;
 import com.justacoder.stinkysocks.block.ModBlocks;
 import com.justacoder.stinkysocks.block.entity.ModBlockEntities;
 import com.justacoder.stinkysocks.item.ModItems;
+import com.justacoder.stinkysocks.recipe.ModRecipes;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -17,5 +18,6 @@ public class StinkySocks implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModBlockEntities.registerBlockEntities();
+		ModRecipes.registerRecipes();
 	}
 }

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 80,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "stinkysocks:stinky_wet_socks"
+  },
+  "result": {
+    "id": "stinkysocks:stinky_socks"
+  }
+}

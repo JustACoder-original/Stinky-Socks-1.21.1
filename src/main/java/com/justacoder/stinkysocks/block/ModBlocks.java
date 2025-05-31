@@ -23,9 +23,11 @@ public class ModBlocks {
     }
 
     private static void registerBlockItem(String name, Block block) {
-        Registry.register(Registries.ITEM, Identifier.of(StinkySocks.MOD_ID),
+        Registry.register(Registries.ITEM, Identifier.of(StinkySocks.MOD_ID, name),
                 new BlockItem(block, new Item.Settings()));
     }
+
+
 
     public static void registerModBlocks() {
         StinkySocks.LOGGER.info("Registering Mod Blocks for " + StinkySocks.MOD_ID);

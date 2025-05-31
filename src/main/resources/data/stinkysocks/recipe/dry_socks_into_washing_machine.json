@@ -1,0 +1,9 @@
+{
+  "type": "stinkysocks:washing_machine",
+  "ingredient": {
+    "item": "stinkysocks:dry_socks"
+  },
+  "result": {
+    "id": "stinkysocks:wet_socks"
+  }
+}

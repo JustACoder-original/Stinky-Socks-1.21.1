@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:redstone"
+    },
+    "@" : {
+      "item": "minecraft:iron_ingot"
+    },
+    "0" : {
+      "item": "minecraft:glass_pane"
+    }
+  },
+  "pattern": [
+    "###",
+    "@0@",
+    "@@@"
+  ],
+  "result": {
+    "count": 1,
+    "id": "stinkysocks:washing_machine"
+  }
+}

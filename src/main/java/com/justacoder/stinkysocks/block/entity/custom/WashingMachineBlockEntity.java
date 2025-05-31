@@ -3,6 +3,9 @@ package com.justacoder.stinkysocks.block.entity.custom;
 import com.justacoder.stinkysocks.block.entity.ImplementedInventory;
 import com.justacoder.stinkysocks.block.entity.ModBlockEntities;
 import com.justacoder.stinkysocks.item.ModItems;
+import com.justacoder.stinkysocks.recipe.ModRecipes;
+import com.justacoder.stinkysocks.recipe.WashingMachineRecipe;
+import com.justacoder.stinkysocks.recipe.WashingMachineRecipeeInput;
 import com.justacoder.stinkysocks.screen.custom.WashingMachineScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
@@ -10,12 +13,12 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
@@ -25,6 +28,8 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class WashingMachineBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory<BlockPos>, ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2,ItemStack.EMPTY);
@@ -103,8 +108,9 @@ public class WashingMachineBlockEntity extends BlockEntity implements ExtendedSc
     }
 
     private void craftItem() {
-        ItemStack output = new ItemStack(ModItems.WET_SOCKS, 1);
+        Optional<RecipeEntry<WashingMachineRecipe>> recipe = getCurrentRecipe();
 
+        ItemStack output = recipe.get().value().output();
         this.removeStack(INPUT_SLOT, 1);
         this.setStack(OUTPUT_SLOT, new ItemStack(output.getItem(),
                 this.getStack(OUTPUT_SLOT).getCount() + output.getCount()));
@@ -119,10 +125,20 @@ public class WashingMachineBlockEntity extends BlockEntity implements ExtendedSc
     }
 
     private boolean hasRecipe() {
-        Item input = ModItems.STINKY_SOCKS;
-        ItemStack output = new ItemStack(ModItems.WET_SOCKS, 1);
-        return this.getStack(INPUT_SLOT).isOf(input) &&
-                canInsertAmountIntoOutputSlot(output.getCount()) &&  canInsertItemIntoOutputSlot(output);
+        Optional<RecipeEntry<WashingMachineRecipe>> recipe = getCurrentRecipe();
+        if (recipe.isEmpty()) {
+            return false;
+        }
+
+        ItemStack output = recipe.get().value().output();
+
+        return canInsertAmountIntoOutputSlot(output.getCount()) &&  canInsertItemIntoOutputSlot(output);
+    }
+
+    private Optional<RecipeEntry<WashingMachineRecipe>> getCurrentRecipe() {
+        return this.getWorld().getRecipeManager()
+                .getFirstMatch(ModRecipes.WASHING_MACHINE_TYPE, new WashingMachineRecipeeInput(inventory.get(INPUT_SLOT)),
+                        this.getWorld());
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
